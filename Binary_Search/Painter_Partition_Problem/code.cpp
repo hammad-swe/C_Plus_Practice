@@ -20,12 +20,13 @@ bool isValid(vector<int> &arr, int n, int m, int maxAllowedPainter){
 }
 
 int painterAllocation(vector<int> &arr, int n, int m){
-    int sum = 0;
+    int sum = 0, maxVal = INT_MIN;
     for(int i=0; i<n; i++){
         sum += arr[i];
+        maxVal = max(maxVal, arr[i]);
     }
     int ans = -1;
-    int st = 0 , end = sum; 
+    int st = maxVal, end = sum; 
     while(st <= end){
         int mid =  st + (end - st) / 2;
         if(isValid(arr, n, m, mid)){
